@@ -1,34 +1,34 @@
 class Solution {
 public:
     int alternateDigitSum(int n) {
-        int neg=0;
+        
         int pos=0;
-        int num=n;
-        int k=0;
-        int sign=0;
-        while(num>0)
+        int neg=0;
+        int count=0;
+        int temp=n;
+        while(temp>0)
         {
-            k++;
-            num/=10;
-            sign=num;
+            count++;
+            temp = temp/10;
         }
-        num=n;
+        temp=n;
         int rem=0;
-        for(int i=0;i<=k;i++)
+        for(int i=0 ; i<=count ; i++)
         {
-            rem=num%10;
-            pos+=rem;
-            num/=10;
+            rem = temp%10;
+            pos = pos+rem;
+            temp = temp/10;
             rem=0;
-            i++;
-            rem=num%10;
-            neg+=rem;
-            num/=10;
+            
+            rem = temp%10;
+            neg = neg+rem;
+            temp = temp/10;
         }
-        int ans=pos-neg;
-        if(k%2==0)
+
+        int ans=pos -neg;
+        if(count % 2 == 0)
         {
-            ans=-ans;
+            ans = -ans;
         }
         return ans;
     }
