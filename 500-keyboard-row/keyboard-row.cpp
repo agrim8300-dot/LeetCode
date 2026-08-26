@@ -1,47 +1,39 @@
 class Solution {
 public:
     vector<string> findWords(vector<string>& words) {
-        unordered_map<char,int> mp; //row no. , string of each row..(qwerty)
-        
+        unordered_map<char,int>mp;
+
         string row1 = "qwertyuiopQWERTYUIOP";
         string row2 = "asdfghjklASDFGHJKL";
         string row3 = "zxcvbnmZXCVBNM";
 
-        for(char c:row1)
+        for(char ch:row1)
         {
-            mp[c] = 1;
+            mp[ch]=1;
         }
-        for(char c:row2)
+        for(char ch:row2)
         {
-            mp[c] = 2;
+            mp[ch]=2;
         }
-        for(char c:row3)
+        for(char ch:row3)
         {
-            mp[c] = 3;
+            mp[ch]=3;
         }
         vector<string>ans;
-
-        for(string &st:words)
+        for(string &str:words)
         {
-            int alpha = mp[st[0]];
             bool flag=true;
-            for(char &ch: st)
+            int rowno = mp[str[0]];
+            for(char &ch:str)
             {
-                if(mp[ch] != alpha)
+                if(mp[ch] != rowno)
                 {
                     flag=false;
                     break;
                 }
             }
-            if(flag) ans.push_back(st);
+            if(flag) ans.push_back(str);
         }
-        // for(int i=0 ; i<words.size() ; i++)
-        // {
-        //     for(int j=0; j<words[i].size() ; j++)
-        //     {
-        //         if(mp.find(words[i][j]) == mp.end())
-        //     }
-        // }
         return ans;
     }
 };
