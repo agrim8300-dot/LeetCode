@@ -20,11 +20,11 @@ public:
             mp[ch]=3;
         }
         vector<string>ans;
-        for(string &str:words)
+        for(string str:words)
         {
             bool flag=true;
             int rowno = mp[str[0]];
-            for(char &ch:str)
+            for(char ch:str)
             {
                 if(mp[ch] != rowno)
                 {
